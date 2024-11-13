@@ -8,7 +8,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -33,7 +33,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="paintPanel" alignment="0" max="32767" attributes="0"/>
+          <Component id="paintPanel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -78,7 +78,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="25" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="paintCanvas" min="-2" pref="416" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
               </Group>
@@ -114,7 +114,7 @@
                           <Component id="paintCanvas" min="-2" pref="258" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="19" max="32767" attributes="0"/>
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -127,7 +127,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas(){&#xa;    @Override&#xa;    public void paint(Graphics g) {&#xa;        super.paint(g);&#xa;        // Draw each shape on the canvas&#xa;        for (Shape shape : shapes) {&#xa;            shape.draw(g); // Assume draw method accepts Graphics object&#xa;        }&#xa;    }&#xa;}"/>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new java.awt.Canvas(){&#xa;    @Override&#xa;    public void paint(Graphics g) {&#xa;        super.paint(g);&#xa;        for (Shape shape : shapes) {&#xa;            shape.draw(g); &#xa;        }&#xa;    }&#xa;}"/>
             <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="PaintWindow_paintCanvas"/>
           </AuxValues>
         </Component>

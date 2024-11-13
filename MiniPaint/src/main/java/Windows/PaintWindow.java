@@ -60,9 +60,8 @@ public class PaintWindow extends JFrame implements DrawingEngine{
             @Override
             public void paint(Graphics g) {
                 super.paint(g);
-                // Draw each shape on the canvas
                 for (Shape shape : shapes) {
-                    shape.draw(g); // Assume draw method accepts Graphics object
+                    shape.draw(g);
                 }
             }
         };
@@ -157,7 +156,7 @@ public class PaintWindow extends JFrame implements DrawingEngine{
                                 .addComponent(RectangleButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(squareButton, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(paintCanvas, javax.swing.GroupLayout.PREFERRED_SIZE, 416, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18))
         );
@@ -185,7 +184,7 @@ public class PaintWindow extends JFrame implements DrawingEngine{
                     .addGroup(paintPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(paintCanvas, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         circleButton.getAccessibleContext().setAccessibleDescription("");
@@ -200,29 +199,36 @@ public class PaintWindow extends JFrame implements DrawingEngine{
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(paintPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(paintPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void removeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeButtonActionPerformed
-        Shape shape = shapes.get(selectShapeJComboBox.getSelectedIndex());
+        int index = selectShapeJComboBox.getSelectedIndex();
+        if(index == -1)
+            return;
+        Shape shape = shapes.get(index);
         removeShape(shape);
         refresh();
     }//GEN-LAST:event_removeButtonActionPerformed
 
     private void colorizeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colorizeButtonActionPerformed
-        Shape shape = shapes.get(selectShapeJComboBox.getSelectedIndex());
-        Color outlineColor = colorChooser("Choose Outline Color");
-        if(outlineColor == null)
-            outlineColor = Color.BLACK;
+        int index = selectShapeJComboBox.getSelectedIndex();
+        if(index == -1)
+            return;
+        Shape shape = shapes.get(index);
+        if(!(shape instanceof LineSegment)) {
+            Color outlineColor = colorChooser("Choose Outline Color");
+            if(outlineColor != null)
+                shape.setOutlineColor(outlineColor);
+        }
         Color fillColor = colorChooser("Choose Fill Color");
-        if(fillColor == null)
-            fillColor = Color.BLACK;
-
-        shape.setOutlineColor(outlineColor);
-        shape.setFillColor(fillColor);
+        if(fillColor != null)
+            shape.setFillColor(fillColor);
+ 
         refresh();
     }//GEN-LAST:event_colorizeButtonActionPerformed
 
@@ -230,14 +236,11 @@ public class PaintWindow extends JFrame implements DrawingEngine{
         Point position = new Point();
         Map<String, Double> properties = new HashMap<>();
         new LineSegmentWindow(position, properties);
-        Color outlineColor = colorChooser("Choose Outline Color");
-        if(outlineColor == null)
-        outlineColor = Color.BLACK;
-        Color fillColor = colorChooser("Choose Fill Color");
-        if(fillColor == null)
-        fillColor = Color.BLACK;
-
-        LineSegment lineSegment = new LineSegment(position, properties, outlineColor, fillColor);
+        Color color = colorChooser("Choose Fill Color.");
+        if(color == null)
+        color = Color.BLACK;
+        
+        LineSegment lineSegment = new LineSegment(position, properties, color, color);
         addShape(lineSegment);
     }//GEN-LAST:event_lineSegmentButtonActionPerformed
 
@@ -277,11 +280,11 @@ public class PaintWindow extends JFrame implements DrawingEngine{
         new CircleWindow(position, properties);
         Color outlineColor = colorChooser("Choose Outline Color");
         if(outlineColor == null)
-        outlineColor = Color.BLACK;
+            outlineColor = Color.BLACK;
         Color fillColor = colorChooser("Choose Fill Color");
         if(fillColor == null)
-        fillColor = Color.BLACK;
-
+            fillColor = Color.BLACK;
+        
         Circle circle = new Circle(position, properties, outlineColor, fillColor);
         addShape(circle);
     }//GEN-LAST:event_circleButtonActionPerformed

@@ -9,7 +9,7 @@
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -26,12 +26,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="circlePanel" min="-2" max="-2" attributes="0"/>
+          <Component id="circlePanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="circlePanel" max="32767" attributes="0"/>
+          <Component id="circlePanel" alignment="1" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -61,7 +61,7 @@
                                   <Component id="xPositionTextField" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="yPositionTextField" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="25" max="32767" attributes="0"/>
                               </Group>
                               <Component id="sideTextField" max="32767" attributes="0"/>
                           </Group>
@@ -73,21 +73,21 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace pref="20" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="yPositionTextField" alignment="0" max="32767" attributes="0"/>
                       <Component id="xPositionTextField" alignment="0" max="32767" attributes="0"/>
-                      <Component id="positionLabel" max="32767" attributes="0"/>
+                      <Component id="positionLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="sideLabel" max="32767" attributes="0"/>
-                      <Component id="sideTextField" max="32767" attributes="0"/>
+                      <Component id="sideTextField" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="doneButton" min="-2" pref="24" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>

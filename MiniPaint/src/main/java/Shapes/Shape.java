@@ -5,7 +5,7 @@ import java.awt.Point;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class Shape {
+public abstract class Shape implements CustomShape{
     protected Point position;
     protected Map<String, Double> properties;
     protected Color outlineColor;
@@ -19,37 +19,46 @@ public abstract class Shape {
     }
     
 
+    @Override
     public Point getPosition() {
         return position;
     }
 
+    @Override
     public void setPosition(Point position) {
         this.position = position;
     }
 
+    @Override
     public Map<String, Double> getProperties() {
         return properties;
     }
 
+    @Override
     public void setProperties(Map<String, Double> properties) {
         this.properties = properties;
     }
 
+    @Override
     public Color getOutlineColor() {
         return outlineColor;
     }
 
+    @Override
     public void setOutlineColor(Color color) {
         this.outlineColor = color;
     }
 
+    @Override
     public Color getFillColor() {
         return fillColor;
     }
 
+    @Override
     public void setFillColor(Color fillColor) {
         this.fillColor = fillColor;
     }
     
+    @Override
     abstract public void draw(Graphics canvas);
 }
