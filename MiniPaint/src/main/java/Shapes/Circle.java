@@ -6,12 +6,10 @@ import java.awt.Graphics;
 import java.util.Map;
 
 public class Circle extends Shape {
-    static int count = 1;
-    final int id;
+    private static final long serialVersionUID = 1L;
     
     public Circle(Point position, Map<String, Double> properties, Color color, Color fillColor) {
         super(position, properties, color, fillColor);
-        id = count++;
     }
 
     @Override
@@ -25,7 +23,7 @@ public class Circle extends Shape {
 
     @Override
     public String toString() {
-        return "Circle" + id;
+        return "Circle";
     }
     
     

@@ -1,11 +1,13 @@
 package Shapes;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.awt.Point;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public abstract class Shape implements CustomShape{
+public abstract class Shape implements CustomShape, Serializable {
+    private static final long serialVersionUID = 1L;
     protected Point position;
     protected Map<String, Double> properties;
     protected Color outlineColor;
@@ -61,4 +63,5 @@ public abstract class Shape implements CustomShape{
     
     @Override
     abstract public void draw(Graphics canvas);
+    
 }

@@ -6,12 +6,10 @@ import java.awt.Point;
 import java.util.Map;
 
 public class LineSegment extends Shape {
-    static int count = 1;
-    final int id;
+    private static final long serialVersionUID = 1L;
     
     public LineSegment(Point position, Map<String, Double> properties, Color outlineColor, Color fillColor) {
         super(position, properties, outlineColor, fillColor);
-        id = count++;
     }
 
     @Override
@@ -28,6 +26,6 @@ public class LineSegment extends Shape {
     
     @Override
     public String toString() {
-        return "Line Segment" + id;
+        return "Line Segment";
     }
 }

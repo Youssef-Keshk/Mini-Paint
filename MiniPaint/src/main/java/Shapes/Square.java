@@ -6,12 +6,10 @@ import java.awt.Graphics;
 import java.util.Map;
 
 public class Square extends Shape {
-    static int count = 1;
-    final int id;
+    private static final long serialVersionUID = 1L;
     
     public Square(Point position, Map<String, Double> properties, Color color, Color fillColor) {
         super(position, properties, color, fillColor);
-        id = count++;
     }
     
     @Override
@@ -25,6 +23,6 @@ public class Square extends Shape {
     
     @Override
     public String toString() {
-        return "Square" + id;
+        return "Square";
     }
 }
