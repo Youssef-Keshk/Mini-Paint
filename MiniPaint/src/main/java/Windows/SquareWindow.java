@@ -3,6 +3,7 @@ package Windows;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class SquareWindow extends javax.swing.JDialog {
     Point position;
@@ -188,9 +189,16 @@ public class SquareWindow extends javax.swing.JDialog {
     }//GEN-LAST:event_sideTextFieldFocusLost
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        position.x = Integer.parseInt(xPositionTextField.getText());
-        position.y = Integer.parseInt(yPositionTextField.getText());
-        properties.put("side", Double.valueOf(sideTextField.getText()));
+        String xText = xPositionTextField.getText();
+        String yText = yPositionTextField.getText();
+        String sideText = sideTextField.getText();
+        if(!(xText.matches("^[1-9]\\d*$") && yText.matches("^[1-9]\\d*$") && sideText.matches("^[1-9]\\d*$"))) {
+            JOptionPane.showMessageDialog(null, "Invalid inputs!", "Error", JOptionPane.ERROR_MESSAGE);              
+            return;
+        }
+        position.x = Integer.parseInt(xText);
+        position.y = Integer.parseInt(yText);
+        properties.put("side", Double.valueOf(sideText));
         dispose();
     }//GEN-LAST:event_doneButtonActionPerformed
 

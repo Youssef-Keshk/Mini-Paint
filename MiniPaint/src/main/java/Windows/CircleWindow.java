@@ -2,12 +2,12 @@ package Windows;
 
 import java.awt.Point;
 import java.awt.Color;
-import javax.swing.JColorChooser;
 import java.util.*;
+import javax.swing.JOptionPane;
 
 public class CircleWindow extends javax.swing.JDialog {
-    private Point position;
-    private Map<String, Double> properties;
+    private final Point position;
+    private final Map<String, Double> properties;
     
     public CircleWindow(Point position, Map<String, Double> properties) {
         this.position = position;
@@ -190,9 +190,16 @@ public class CircleWindow extends javax.swing.JDialog {
     }//GEN-LAST:event_radiusTextFieldFocusLost
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        position.x = Integer.parseInt(xPositionTextField.getText());
-        position.y = Integer.parseInt(yPositionTextField.getText());
-        properties.put("radius", Double.valueOf(radiusTextField.getText()));
+        String xText = xPositionTextField.getText();
+        String yText = yPositionTextField.getText();
+        String radiusText = radiusTextField.getText();
+        if(!(xText.matches("^[1-9]\\d*$") && yText.matches("^[1-9]\\d*$") && radiusText.matches("^[1-9]\\d*$"))) {
+            JOptionPane.showMessageDialog(null, "Invalid inputs!", "Error", JOptionPane.ERROR_MESSAGE);              
+            return;
+        }
+        position.x = Integer.parseInt(xText);
+        position.y = Integer.parseInt(yText);
+        properties.put("radius", Double.valueOf(radiusText));
         dispose();
     }//GEN-LAST:event_doneButtonActionPerformed
 

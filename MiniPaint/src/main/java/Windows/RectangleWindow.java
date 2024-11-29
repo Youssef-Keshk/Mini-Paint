@@ -3,6 +3,7 @@ package Windows;
 import java.awt.Color;
 import java.awt.Point;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 public class RectangleWindow extends javax.swing.JDialog {
     Point position;
@@ -228,10 +229,18 @@ public class RectangleWindow extends javax.swing.JDialog {
     }//GEN-LAST:event_widthTextFieldFocusLost
 
     private void doneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doneButtonActionPerformed
-        position.x = Integer.parseInt(xPositionTextField.getText());
-        position.y = Integer.parseInt(yPositionTextField.getText());
-        properties.put("length", Double.valueOf(lengthTextField.getText()));
-        properties.put("width", Double.valueOf(widthTextField.getText()));
+        String xText = xPositionTextField.getText();
+        String yText = yPositionTextField.getText();
+        String lengthText = lengthTextField.getText();
+        String widthText = widthTextField.getText();
+        if(!(xText.matches("^[1-9]\\d*$") && yText.matches("^[1-9]\\d*$") && lengthText.matches("^[1-9]\\d*$") && widthText.matches("^[1-9]\\d*$"))) {
+            JOptionPane.showMessageDialog(null, "Invalid inputs!", "Error", JOptionPane.ERROR_MESSAGE);              
+            return;
+        }
+        position.x = Integer.parseInt(xText);
+        position.y = Integer.parseInt(yText);
+        properties.put("length", Double.valueOf(lengthText));
+        properties.put("width", Double.valueOf(widthText));
         dispose();
     }//GEN-LAST:event_doneButtonActionPerformed
 
